@@ -15,7 +15,10 @@ public class HW3 {
 		sc.close();
 		
 		int[] aux = new int[n];
-		int[] sortedarr = A;
+		int[] sortedarr = new int[n];
+		for(int i = 0; i < n; i++) {
+			sortedarr[i] = A[i];
+		}
 		mergeSort(sortedarr,aux,0,n-1);
 		
 		int[] index = new int[n];
@@ -23,13 +26,10 @@ public class HW3 {
 		for(int i = 0; i < n; i++) {
 			if(i != 0 && sortedarr[i-1] != sortedarr[i]) rank++;
 			for(int j = 0; j < n; j++) {
-				index[i] = rank;
+				if(A[j]==sortedarr[i]) index[j] = rank;
 			}
 		}
 		
-		for(int i = 0; i < n; i++) {
-			System.out.print(sortedarr[i] + " ");
-		}
 		System.out.println();
 		for(int i = 0; i < n; i++) {
 			System.out.print(index[i] + " ");
